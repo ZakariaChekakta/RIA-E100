@@ -1,12 +1,19 @@
 <?xml version="1.0"?>
 <robot name="RIA-E100" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
+
+  <xacro:arg name="safety_sensors_enabled" default="false" />
+
   <xacro:include filename="$(find e100_description)/include/urdf/materials.urdf.xacro"/>
   <xacro:include filename="$(find e100_description)/include/urdf/property.urdf.xacro"/>
   <xacro:include filename="$(find e100_description)/include/urdf/wheels.urdf.xacro"/>
   <xacro:include filename="$(find e100_description)/include/urdf/rplidar.urdf.xacro"/>
   <xacro:include filename="$(find e100_description)/include/urdf/rgbd.urdf.xacro"/>
   <xacro:include filename="$(find e100_description)/include/urdf/imu.urdf.xacro"/>
+  <xacro:if value="$(arg safety_sensors_enabled)">
+   <xacro:include filename="$(find e100_description)/include/urdf/safety_sensors.urdf.xacro"/>
+  </xacro:if>
+ 
 
 
   <xacro:macro name="ria_e100" params="base_hw_interface:=hardware_interface/VelocityJointInterface">
@@ -144,6 +151,8 @@
     <origin rpy="0 0 0" xyz="-0.3734 -0.11 -0.072"/>
   </joint>
 
+  
+
   <gazebo reference="front_left_wheel">
     <mu1 value="10"/>
     <mu2 value="10"/>
@@ -183,6 +192,5 @@
     <kd>1.0</kd>
     <turnGravityOff>false</turnGravityOff>
   </gazebo>
-  
-  </xacro:macro>  
+ </xacro:macro>  
 </robot>

@@ -8,6 +8,8 @@
     <arg name="gui" value="true"/>
   </include>
 
+
+  
   <param name="robot_description" command="$(find xacro)xacro '$(find e100_description)/include/urdf/ria_e100_gazebo.urdf.xacro'"/>
 
   <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -model ria -param robot_description"/>
@@ -17,5 +19,10 @@
   <node name="base_controller_spawner" pkg="controller_manager" type="spawner"  args="ria_base_controller ria_joint_state_controller" respawn="false" output="screen"/>
 
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+
+   <node pkg="twist_mux" type="twist_mux" name="twist_mux">
+    <rosparam command="load" file="$(find e100_sim)/config/twist_mux.yaml" />
+    <remap from="cmd_vel_out" to="ria_base_controller/cmd_vel"/>
+  </node>
 
 </launch>

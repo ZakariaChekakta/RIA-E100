@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <launch>
-
+z
   <!-- RIA-E100 base model -->
   <param name="robot_description" command="$(find xacro)xacro '$(find e100_description)/include/urdf/ria_e100.urdf.xacro'"/>
 

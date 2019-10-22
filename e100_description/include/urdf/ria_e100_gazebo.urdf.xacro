@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <robot name="ria_e100_gazebo" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
+  <xacro:arg name="safety_sensors_enabled" default="$(optenv SAFETY_SENSORS_ENABLED)"/>
   <xacro:include filename="$(find e100_description)/include/urdf/ria_e100_gazebo_core.urdf.xacro"/>
 
   <xacro:ria_e100 base_hw_interface="hardware_interface/VelocityJointInterface"/>

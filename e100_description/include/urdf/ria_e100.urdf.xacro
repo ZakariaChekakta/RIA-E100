@@ -108,5 +108,4 @@
     <child link="rear_right_wheel"/>
     <origin rpy="0 0 0" xyz="-0.3734 -0.11 -0.072"/>
   </joint>
- 
 </robot>
